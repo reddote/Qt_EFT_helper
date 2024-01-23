@@ -3,6 +3,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <vector>
+#include "CustomWeaponVectorList.h"
 
 class JsonReader
 {
@@ -14,6 +15,6 @@ private:
 
 public:
 	JsonReader();
-	std::vector<QString> ReadJsonFile(const QString &fileName);
+	std::vector<CustomWeaponVectorList> ReadJsonFile(const QString &fileName);
 };
 

@@ -7,9 +7,9 @@ JsonReader::JsonReader()
 	
 }
 
-std::vector<QString> JsonReader::ReadJsonFile(const QString & fileName)
+std::vector<CustomWeaponVectorList> JsonReader::ReadJsonFile(const QString & fileName)
 {
-	std::vector<QString> keyList;
+	std::vector<CustomWeaponVectorList> keyList;
 	QFile file(fileName);
 	if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 		qDebug() << "Failed to open file for reading";
@@ -32,14 +32,20 @@ std::vector<QString> JsonReader::ReadJsonFile(const QString & fileName)
 	for (const QString &key : qWeapons.keys()) {
 		qBulletType = qWeapons.value(key).toArray();
 		qDebug() << "Weapon:" << key;
-		keyList.push_back(key);
+		CustomWeaponVectorList *customList = new CustomWeaponVectorList();
+		customList->key = key;
 		for (const QJsonValue &value : qBulletType) {
 			qDebug() << "  Bullet Type:" << value.toString();
+			QString tempValue = value.toString();
+			customList->values.push_back(tempValue);
 		}
+
+		keyList.push_back(*customList);
 	}
 	
 	return keyList;
 }
+
 
 JsonReader::~JsonReader()
 {}
