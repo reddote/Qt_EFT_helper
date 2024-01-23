@@ -1,0 +1,22 @@
+{
+    "AK-47": [
+        "7.62\u00d739mm",
+        "5.45\u00d739mm"
+    ],
+    "M16 Rifle": [
+        "5.56\u00d745mm NATO",
+        "7.62\u00d751mm NATO"
+    ],
+    "Glock 17": [
+        "9mm Parabellum",
+        "9mm NATO"
+    ],
+    "Remington 700": [
+        ".308 Winchester",
+        ".30-06 Springfield"
+    ],
+    "Uzi": [
+        "9mm Parabellum",
+        ".45 ACP"
+    ]
+}
