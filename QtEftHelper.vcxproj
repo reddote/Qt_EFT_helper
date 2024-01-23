@@ -92,11 +92,13 @@
     <QtRcc Include="QtEftHelper.qrc" />
     <QtUic Include="QtEftHelper.ui" />
     <QtMoc Include="QtEftHelper.h" />
+    <ClCompile Include="CustomWeaponVectorList.cpp" />
     <ClCompile Include="JsonReader.cpp" />
     <ClCompile Include="QtEftHelper.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CustomWeaponVectorList.h" />
     <ClInclude Include="JsonReader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'QtEftHelperHp9288.ui'
+** Form generated from reading UI file 'QtEftHelpersv9288.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef QTEFTHELPERHP9288_H
-#define QTEFTHELPERHP9288_H
+#ifndef QTEFTHELPERSV9288_H
+#define QTEFTHELPERSV9288_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -27,7 +28,9 @@ class Ui_QtEftHelperClass
 {
 public:
     QWidget *centralWidget;
-    QComboBox *weaponList;
+    QComboBox *weaponComboBox;
+    QTableView *bulletTable;
+    QComboBox *bulletComboBox;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -36,16 +39,22 @@ public:
     {
         if (QtEftHelperClass->objectName().isEmpty())
             QtEftHelperClass->setObjectName(QStringLiteral("QtEftHelperClass"));
-        QtEftHelperClass->resize(608, 400);
+        QtEftHelperClass->resize(886, 505);
         centralWidget = new QWidget(QtEftHelperClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        weaponList = new QComboBox(centralWidget);
-        weaponList->setObjectName(QStringLiteral("weaponList"));
-        weaponList->setGeometry(QRect(10, 20, 171, 22));
+        weaponComboBox = new QComboBox(centralWidget);
+        weaponComboBox->setObjectName(QStringLiteral("weaponComboBox"));
+        weaponComboBox->setGeometry(QRect(10, 20, 171, 22));
+        bulletTable = new QTableView(centralWidget);
+        bulletTable->setObjectName(QStringLiteral("bulletTable"));
+        bulletTable->setGeometry(QRect(10, 50, 471, 341));
+        bulletComboBox = new QComboBox(centralWidget);
+        bulletComboBox->setObjectName(QStringLiteral("bulletComboBox"));
+        bulletComboBox->setGeometry(QRect(190, 20, 171, 22));
         QtEftHelperClass->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(QtEftHelperClass);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 608, 21));
+        menuBar->setGeometry(QRect(0, 0, 886, 21));
         QtEftHelperClass->setMenuBar(menuBar);
         mainToolBar = new QToolBar(QtEftHelperClass);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -62,8 +71,13 @@ public:
     void retranslateUi(QMainWindow *QtEftHelperClass)
     {
         QtEftHelperClass->setWindowTitle(QApplication::translate("QtEftHelperClass", "QtEftHelper", 0));
-        weaponList->clear();
-        weaponList->insertItems(0, QStringList()
+        weaponComboBox->clear();
+        weaponComboBox->insertItems(0, QStringList()
+         << QApplication::translate("QtEftHelperClass", "M4A1", 0)
+         << QApplication::translate("QtEftHelperClass", "Mp5", 0)
+        );
+        bulletComboBox->clear();
+        bulletComboBox->insertItems(0, QStringList()
          << QApplication::translate("QtEftHelperClass", "M4A1", 0)
          << QApplication::translate("QtEftHelperClass", "Mp5", 0)
         );
@@ -77,4 +91,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // QTEFTHELPERHP9288_H
+#endif // QTEFTHELPERSV9288_H
