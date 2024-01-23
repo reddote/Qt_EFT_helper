@@ -2,6 +2,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <vector>
 
 class JsonReader
 {
@@ -13,6 +14,6 @@ private:
 
 public:
 	JsonReader();
-	void ReadJsonFile(const QString &fileName);
+	std::vector<QString> ReadJsonFile(const QString &fileName);
 };
 

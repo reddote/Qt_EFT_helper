@@ -15,4 +15,5 @@ public:
 private:
     Ui::QtEftHelperClass ui;
 	JsonReader *jsonReader;
+	void WeaponComboBoxUpdater();
 };
