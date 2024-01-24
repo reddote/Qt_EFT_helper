@@ -31,7 +31,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>5.6_msvc2015_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;qml;quick</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -89,6 +89,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\BulletTable.cpp" />
+    <ClCompile Include="Source\CustomBulletList.cpp" />
     <ClCompile Include="Source\CustomWeaponVectorList.cpp" />
     <ClCompile Include="Source\JsonReader.cpp" />
     <ClCompile Include="Source\QtEftHelper.cpp" />
@@ -97,6 +99,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Header\BulletTable.h" />
+    <ClInclude Include="Header\CustomBulletList.h" />
     <ClInclude Include="Header\CustomWeaponVectorList.h" />
     <ClInclude Include="Header\JsonReader.h" />
     <QtMoc Include="Header\QtEftHelper.h" />

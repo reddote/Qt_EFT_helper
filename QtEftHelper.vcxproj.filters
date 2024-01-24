@@ -43,6 +43,12 @@
     <ClCompile Include="Source\QtEftHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BulletTable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CustomBulletList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header\CustomWeaponVectorList.h">
@@ -51,9 +57,15 @@
     <ClInclude Include="Header\JsonReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Header\CustomBulletList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Header\QtEftHelper.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Header\BulletTable.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

@@ -31,12 +31,10 @@ std::vector<CustomWeaponVectorList> JsonReader::ReadJsonFile(const QString & fil
 	qWeapons = doc.object();
 	for (const QString &key : qWeapons.keys()) {
 		qBulletType = qWeapons.value(key).toArray();
-		qDebug() << "Weapon:" << key;
 		CustomWeaponVectorList *customList = new CustomWeaponVectorList();
 		customList->key = key;
 		for (const QJsonValue &value : qBulletType) {
-			qDebug() << "  Bullet Type:" << value.toString();
-			QString tempValue = value.toString();
+			CustomBulletList tempValue(value);
 			customList->values.push_back(tempValue);
 		}
 

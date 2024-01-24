@@ -1,22 +1,172 @@
 {
     "AK-47": [
-        "7.62\u00d739mm",
-        "5.45\u00d739mm"
+        {
+            "type": "7.62×39mm",
+	          "armor1": "1",
+	          "armor2": "10",
+	          "armor3": "12",
+	          "armor4": "5",
+	          "armor5": "1",
+	          "armor6": "1",
+            "damage": "100",
+            "penetration": "0.75",
+	          "recoil": "100",
+	          "fragChance": "100",
+	          "light": "100",
+	          "heavy": "100",
+            "speed": "0.50"
+      },
+      {
+        "type": "5.45×39mm",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.75",
+        "recoil": "100",
+        "fragChance": "100",
+        "light": "100",
+        "heavy": "100",
+        "speed": "0.9"
+      }
     ],
     "M16 Rifle": [
-        "5.56\u00d745mm NATO",
-        "7.62\u00d751mm NATO"
+      {
+        "type": "5.56×45mm NATO",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.175",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "100",
+        "heavy": "100",
+        "speed": "1.50"
+      },
+      {
+        "type": "7.62×51mm NATO",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.9",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "10",
+        "heavy": "100",
+        "speed": "0.5"
+      }
     ],
     "Glock 17": [
-        "9mm Parabellum",
-        "9mm NATO"
+      {
+        "type": "9mm Parabellum",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.78",
+        "recoil": "10",
+        "fragChance": "100",
+        "light": "100",
+        "heavy": "100",
+        "speed": "0.50"
+      },
+      {
+        "type": "9mm NATO",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.85",
+        "recoil": "100",
+        "fragChance": "100",
+        "light": "1",
+        "heavy": "100",
+        "speed": "0.50"
+      }
     ],
     "Remington 700": [
-        ".308 Winchester",
-        ".30-06 Springfield"
+      {
+        "type": ".300",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.65",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "1",
+        "heavy": "1",
+        "speed": "0.50"
+      },
+      {
+        "type": ".30-06 Springfield",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.5",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "10",
+        "heavy": "10",
+        "speed": "1"
+      }
     ],
     "Uzi": [
-        "9mm Parabellum",
-        ".45 ACP"
+      {
+        "type": "9mm Parabellum",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "100",
+        "penetration": "0.7",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "100",
+        "heavy": "10",
+        "speed": "0.40"
+      },
+      {
+        "type": ".45 ACP",
+        "armor1": "1",
+        "armor2": "10",
+        "armor3": "12",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "10",
+        "penetration": "0.75",
+        "recoil": "100",
+        "fragChance": "10",
+        "light": "1",
+        "heavy": "10",
+        "speed": "0.55"
+      }
     ]
 }

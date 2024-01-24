@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <vector>
 #include "CustomWeaponVectorList.h"
+#include "CustomBulletList.h"
 
 class JsonReader
 {
