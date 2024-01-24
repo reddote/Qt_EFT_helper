@@ -22,6 +22,7 @@ public:
 
 private:
 	QStringList rowNames;
+	QVector<QString> columnValues;
 	static const int ROWS = 15;
 	static const int COLUMNS = 2;
 
