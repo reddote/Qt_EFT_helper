@@ -89,17 +89,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\CustomWeaponVectorList.cpp" />
+    <ClCompile Include="Source\JsonReader.cpp" />
+    <ClCompile Include="Source\QtEftHelper.cpp" />
     <QtRcc Include="QtEftHelper.qrc" />
     <QtUic Include="QtEftHelper.ui" />
-    <QtMoc Include="QtEftHelper.h" />
-    <ClCompile Include="CustomWeaponVectorList.cpp" />
-    <ClCompile Include="JsonReader.cpp" />
-    <ClCompile Include="QtEftHelper.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CustomWeaponVectorList.h" />
-    <ClInclude Include="JsonReader.h" />
+    <ClInclude Include="Header\CustomWeaponVectorList.h" />
+    <ClInclude Include="Header\JsonReader.h" />
+    <QtMoc Include="Header\QtEftHelper.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

@@ -1,4 +1,4 @@
-#include "QtEftHelper.h"
+#include "Header/QtEftHelper.h"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
