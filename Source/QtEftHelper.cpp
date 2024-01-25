@@ -43,18 +43,24 @@ void QtEftHelper::WeaponComboBoxUpdater()
 	weapons->clear();
 	bullets->clear();
 
-	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\EftBullet.json");
+	QObject::connect(networkHandler, &NetworkHandler::jsonReceived,
+		[=](const QJsonObject& jsonObject) {
+		std::vector<CustomWeaponVectorList> data = jsonReader->ReadFromJsonObject(jsonObject);
 
-	for each (CustomWeaponVectorList var in weaponAndBulletList)
-	{
-		weapons->addItem(var.key);
-	}
-	
-	for each (CustomBulletList var in weaponAndBulletList[weapons->currentIndex()].values)
-	{
-		bullets->addItem(var.type);
-	}
+		
+		weaponAndBulletList = data;
+		for each (CustomWeaponVectorList var in weaponAndBulletList)
+		{
+			weapons->addItem(var.key);
+		}
 
+		for each (CustomBulletList var in weaponAndBulletList[weapons->currentIndex()].values)
+		{
+			bullets->addItem(var.type);
+		}
+	});
+
+	networkHandler->fetchJsonData(QUrl("https://raw.githubusercontent.com/reddote/EFTJSON/main/EftBullet.json"));
 }
 
 void QtEftHelper::BulletTableUpdater(int index)

@@ -16,6 +16,6 @@ private:
 
 public:
 	JsonReader();
-	std::vector<CustomWeaponVectorList> ReadJsonFile(const QString &fileName);
+	std::vector<CustomWeaponVectorList> ReadFromJsonObject(const QJsonObject& jsonObject);
 };
 
