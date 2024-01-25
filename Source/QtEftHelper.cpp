@@ -13,6 +13,9 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	bulletTableView = ui.bulletTable;
 	JsonDowloadFromNet();
 
+	jsonReader = new JsonReader();
+	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\Eft.json");
+
 	WeaponComboBoxUpdater();
 	connect(weapons, SIGNAL(currentIndexChanged(int)), 
 		this, SLOT(OnComboBoxIndexChanged(int)));
@@ -39,11 +42,8 @@ QtEftHelper::~QtEftHelper()
 
 void QtEftHelper::WeaponComboBoxUpdater()
 {
-	jsonReader = new JsonReader();
 	weapons->clear();
 	bullets->clear();
-
-	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\Eft.json");
 
 	for each (CustomWeaponVectorList var in weaponAndBulletList)
 	{
