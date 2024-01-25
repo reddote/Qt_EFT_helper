@@ -6,6 +6,7 @@
 #include "CustomWeaponVectorList.h"
 #include "BulletTable.h"
 #include "CustomBulletList.h"
+#include "NetworkHandler.h"
 
 class QtEftHelper : public QMainWindow
 {
@@ -23,7 +24,9 @@ private:
 	std::vector<CustomWeaponVectorList> weaponAndBulletList;
     Ui::QtEftHelperClass ui;
 	JsonReader *jsonReader;
+	NetworkHandler *jsonDownloader;
 	void WeaponComboBoxUpdater();
+	void JsonDowloadFromNet();
 
 private slots:
 	void OnComboBoxIndexChanged(int index);

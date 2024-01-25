@@ -168,5 +168,23 @@
         "heavy": "10",
         "speed": "0.55"
       }
+    ],
+	"M249": [
+      {
+        "type": "5.56×45mm NATO",
+        "armor1": "1",
+        "armor2": "1",
+        "armor3": "2",
+        "armor4": "5",
+        "armor5": "1",
+        "armor6": "1",
+        "damage": "10",
+        "penetration": "0.7",
+        "recoil": "1",
+        "fragChance": "1",
+        "light": "100",
+        "heavy": "1",
+        "speed": "1.40"
+      }
     ]
 }

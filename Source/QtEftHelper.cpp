@@ -2,6 +2,7 @@
 #include <vector>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QDebug>
 
 QtEftHelper::QtEftHelper(QWidget *parent)
     : QMainWindow(parent)
@@ -10,12 +11,13 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	weapons = ui.weaponComboBox;
 	bullets = ui.bulletComboBox;
 	bulletTableView = ui.bulletTable;
+	JsonDowloadFromNet();
+
 	WeaponComboBoxUpdater();
 	connect(weapons, SIGNAL(currentIndexChanged(int)), 
 		this, SLOT(OnComboBoxIndexChanged(int)));
 	connect(bullets, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(BulletTableUpdater(int)));
-
 
 	QQmlApplicationEngine engine;
 	customBulletTable = new BulletTable(this);
@@ -32,8 +34,6 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 
 }
 
-
-
 QtEftHelper::~QtEftHelper()
 {}
 
@@ -43,7 +43,7 @@ void QtEftHelper::WeaponComboBoxUpdater()
 	weapons->clear();
 	bullets->clear();
 
-	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\EftBullet.json");
+	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\Eft.json");
 
 	for each (CustomWeaponVectorList var in weaponAndBulletList)
 	{
@@ -55,6 +55,19 @@ void QtEftHelper::WeaponComboBoxUpdater()
 		bullets->addItem(var.type);
 	}
 
+}
+
+void QtEftHelper::JsonDowloadFromNet()
+{
+	const std::string url = "https://raw.githubusercontent.com/reddote/EFTJSON/main/EftBullet.json";
+	const std::string outputFilePath = "EFT.json";
+
+	if (jsonDownloader->DownloadFile(url, outputFilePath)) {
+		qDebug() << "Download successful";
+	}
+	else {
+		qDebug() << "Download failed";
+	}
 }
 
 void QtEftHelper::BulletTableUpdater(int index)

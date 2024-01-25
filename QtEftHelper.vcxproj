@@ -62,7 +62,12 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Curl\curl-8.5.0_6-win64-mingw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Curl\curl-8.5.0_6-win64-mingw\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
@@ -93,12 +98,14 @@
     <ClCompile Include="Source\CustomBulletList.cpp" />
     <ClCompile Include="Source\CustomWeaponVectorList.cpp" />
     <ClCompile Include="Source\JsonReader.cpp" />
+    <ClCompile Include="Source\NetworkHandler.cpp" />
     <ClCompile Include="Source\QtEftHelper.cpp" />
     <QtRcc Include="QtEftHelper.qrc" />
     <QtUic Include="QtEftHelper.ui" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Header\NetworkHandler.h" />
     <QtMoc Include="Header\BulletTable.h" />
     <ClInclude Include="Header\CustomBulletList.h" />
     <ClInclude Include="Header\CustomWeaponVectorList.h" />

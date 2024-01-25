@@ -16,8 +16,12 @@ std::vector<CustomWeaponVectorList> JsonReader::ReadJsonFile(const QString & fil
 		return keyList;
 	}
 
-	QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+	QTextStream stream(&file);
+	stream.setCodec("UTF-8");
+	QString fileContent = stream.readAll();
 	file.close();
+
+	QJsonDocument doc = QJsonDocument::fromJson(fileContent.toUtf8());
 
 	if (doc.isNull()) {
 		qDebug() << "Failed to create JSON doc.";
