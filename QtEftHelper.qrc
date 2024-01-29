@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/QtEftHelper">
         <file>qml/main.qml</file>
+        <file>Reseources/custom.png</file>
+        <file>Reseources/Shoreline.webp</file>
     </qresource>
 </RCC>

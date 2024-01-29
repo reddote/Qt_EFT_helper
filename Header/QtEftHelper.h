@@ -7,6 +7,7 @@
 #include "BulletTable.h"
 #include "CustomBulletList.h"
 #include "NetworkHandler.h"
+#include "MenuController.h"
 
 class QtEftHelper : public QMainWindow
 {
@@ -14,7 +15,7 @@ class QtEftHelper : public QMainWindow
 
 public:
     QtEftHelper(QWidget *parent = nullptr);
-    ~QtEftHelper();
+	~QtEftHelper();
 
 private:
 	QComboBox *weapons;
@@ -25,6 +26,7 @@ private:
     Ui::QtEftHelperClass ui;
 	JsonReader *jsonReader;
 	NetworkHandler *jsonDownloader;
+	MenuController *menuController;
 	void WeaponComboBoxUpdater();
 	void JsonDowloadFromNet();
 

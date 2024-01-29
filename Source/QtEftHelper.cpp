@@ -8,6 +8,31 @@ QtEftHelper::QtEftHelper(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
+	ui.frameBullet->setVisible(false);
+
+
+
+	menuController = new MenuController(ui.mapView, this);
+	
+	QString shoreline = ":/QtEftHelper/Reseources/Shoreline.webp";
+	QString custom = ":/QtEftHelper/Reseources/custom.png";
+
+	QAction *shorelineButton = ui.actionShorline;
+	QAction *customButton = ui.actionCustom;
+
+	// Connect the menu button's triggered signal to the handler's slot
+	connect(shorelineButton, &QAction::triggered, this, [this, shoreline]() {
+		this->menuController->onMenuButtonTriggered(shoreline);
+	});
+
+	connect(customButton, &QAction::triggered, this, [this, custom]() {
+		this->menuController->onMenuButtonTriggered(custom);
+	});
+
+
+
+
+
 	weapons = ui.weaponComboBox;
 	bullets = ui.bulletComboBox;
 	bulletTableView = ui.bulletTable;

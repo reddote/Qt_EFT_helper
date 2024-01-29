@@ -98,6 +98,8 @@
     <ClCompile Include="Source\CustomBulletList.cpp" />
     <ClCompile Include="Source\CustomWeaponVectorList.cpp" />
     <ClCompile Include="Source\JsonReader.cpp" />
+    <ClCompile Include="Source\MapController.cpp" />
+    <ClCompile Include="Source\MenuController.cpp" />
     <ClCompile Include="Source\NetworkHandler.cpp" />
     <ClCompile Include="Source\QtEftHelper.cpp" />
     <QtRcc Include="QtEftHelper.qrc" />
@@ -105,6 +107,8 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Header\MapController.h" />
+    <QtMoc Include="Header\MenuController.h" />
     <ClInclude Include="Header\NetworkHandler.h" />
     <QtMoc Include="Header\BulletTable.h" />
     <ClInclude Include="Header\CustomBulletList.h" />
