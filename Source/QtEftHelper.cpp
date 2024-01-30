@@ -19,7 +19,6 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	QAction *shorelineButton = ui.actionShorline;
 	QAction *customButton = ui.actionCustom;
 
-	int quit = 3;
 	int mapPage = 2;
 	int bulletPage = 1;
 	QMenu *menuMapButton = ui.menuMap;
@@ -43,6 +42,8 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 
 	connect(bulletMenuButton, &QAction::triggered, this, [this, bulletPage]() {
 		this->onMenuButtonTriggered(bulletPage); });
+
+	connect(quitMenuButton, &QAction::triggered, &QCoreApplication::quit);
 	//MenuController End
 }
 
@@ -190,8 +191,8 @@ void QtEftHelper::onMenuButtonTriggered(const QString & mapName)
 
 void QtEftHelper::onMenuButtonTriggered(const int& pageNumber) {
 	emit menuButtonClicked();
-	if (pageNumber == 3) {
-		//TODO close the application
+	if (pageNumber < 0 && pageNumber >2) {
+		qDebug() << "Check Page number";
 	}
 	else {
 		SetUI(pageNumber);
