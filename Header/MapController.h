@@ -32,6 +32,7 @@ private:
 	void doPanning(const QPoint &pos);
 	void stopPanning();
 	QGraphicsScene *scene;
+	QGraphicsPixmapItem *item;
 };
 
 #endif // MAPCONTROLLER

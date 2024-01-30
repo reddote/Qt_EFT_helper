@@ -52,9 +52,6 @@
     <ClCompile Include="Source\NetworkHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\MenuController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\MapController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Header\MapController.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="Header\MenuController.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

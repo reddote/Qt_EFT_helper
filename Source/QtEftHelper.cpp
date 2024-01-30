@@ -5,33 +5,72 @@
 #include <QDebug>
 
 QtEftHelper::QtEftHelper(QWidget *parent)
-    : QMainWindow(parent)
+	: QMainWindow(parent)
 {
-    ui.setupUi(this);
-	ui.frameBullet->setVisible(false);
+	ui.setupUi(this);
+	SetUI(0);
 
-
-
-	menuController = new MenuController(ui.mapView, this);
+	Init();
 	
+	//Menu Controller
+	//Map information for actioMenuButtons
 	QString shoreline = ":/QtEftHelper/Reseources/Shoreline.webp";
 	QString custom = ":/QtEftHelper/Reseources/custom.png";
-
 	QAction *shorelineButton = ui.actionShorline;
 	QAction *customButton = ui.actionCustom;
 
+	int quit = 3;
+	int mapPage = 2;
+	int bulletPage = 1;
+	QMenu *menuMapButton = ui.menuMap;
+	QAction *bulletMenuButton = ui.actionBulletType;
+	QAction *quitMenuButton = ui.actionQuit;
+
 	// Connect the menu button's triggered signal to the handler's slot
 	connect(shorelineButton, &QAction::triggered, this, [this, shoreline]() {
-		this->menuController->onMenuButtonTriggered(shoreline);
+		this->onMenuButtonTriggered(shoreline);
 	});
 
 	connect(customButton, &QAction::triggered, this, [this, custom]() {
-		this->menuController->onMenuButtonTriggered(custom);
+		this->onMenuButtonTriggered(custom);
 	});
 
+	connect(menuMapButton, &QMenu::triggered, this, [this, mapPage](){
+		this->onMenuButtonTriggered(mapPage); });
 
+	connect(bulletMenuButton, &QAction::triggered, this, [this, bulletPage]() {
+		this->onMenuButtonTriggered(bulletPage); });
 
+	connect(bulletMenuButton, &QAction::triggered, this, [this, bulletPage]() {
+		this->onMenuButtonTriggered(bulletPage); });
+	//MenuController End
+}
 
+QtEftHelper::~QtEftHelper()
+{}
+
+void QtEftHelper::SetUI(int index) {
+	if (index == 0) {
+		ui.frameBullet->setVisible(false);
+		ui.frameMap->setVisible(false);
+	}
+	else if(index == 1) {
+		ui.frameBullet->setVisible(true);
+		ui.frameMap->setVisible(false);
+		Init();
+		InitBulletFrame();
+	}
+	else if (index == 2) {
+		ui.frameBullet->setVisible(false);
+		ui.frameMap->setVisible(true);
+	}
+	else{
+		qDebug() << "Index must be between 0-3";
+	}
+}
+
+void QtEftHelper::Init() {
+	mapController = new MapController(ui.mapView);
 
 	weapons = ui.weaponComboBox;
 	bullets = ui.bulletComboBox;
@@ -40,12 +79,19 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 
 	jsonReader = new JsonReader();
 	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\Eft.json");
+}
+
+void QtEftHelper::InitBulletFrame() {
 
 	WeaponComboBoxUpdater();
-	connect(weapons, SIGNAL(currentIndexChanged(int)), 
-		this, SLOT(OnComboBoxIndexChanged(int)));
-	connect(bullets, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(BulletTableUpdater(int)));
+	connect(weapons, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+		this, &QtEftHelper::OnComboBoxIndexChanged);
+	/*connect(weapons, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(OnComboBoxIndexChanged(int)));//old imp*/
+	connect(bullets, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
+		this, &QtEftHelper::BulletTableUpdater);
+	/*connect(bullets, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(BulletTableUpdater(int)));//old imp*/
 
 	QQmlApplicationEngine engine;
 	customBulletTable = new BulletTable(this);
@@ -59,11 +105,12 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	engine.load(QUrl(QStringLiteral("qrc:/QtEftHelper/qml/main.qml")));
 
 	BulletTableUpdater(bullets->currentIndex());
-
 }
 
-QtEftHelper::~QtEftHelper()
-{}
+void QtEftHelper::MapChanger(QString map)
+{
+	mapController->ChangeMapView(map);
+}
 
 void QtEftHelper::WeaponComboBoxUpdater()
 {
@@ -133,15 +180,39 @@ void QtEftHelper::BulletTableUpdater(int index)
 
 }
 
+void QtEftHelper::onMenuButtonTriggered(const QString & mapName)
+{
+	// Emit the custom signal when the menu button is triggered
+	emit menuButtonClicked();
+	//QString mapFile = ":/QtEftHelper/Reseources/Shoreline.webp";
+	MapChanger(mapName);
+}
+
+void QtEftHelper::onMenuButtonTriggered(const int& pageNumber) {
+	emit menuButtonClicked();
+	if (pageNumber == 3) {
+		//TODO close the application
+	}
+	else {
+		SetUI(pageNumber);
+	}
+}
+
 void QtEftHelper::OnComboBoxIndexChanged(int index) {
 
-	bullets->clear();
-	
-	for each (CustomBulletList var in weaponAndBulletList[index].values)
-	{
-		bullets->addItem(var.type);
+	if (index < 0) {
+		qDebug() << "Index less then 0";
 	}
-	BulletTableUpdater(bullets->currentIndex());
+	else {
+		bullets->clear();
+		
+		for each (CustomBulletList var in weaponAndBulletList[index].values)
+		{
+			bullets->addItem(var.type);
+		}
+		BulletTableUpdater(bullets->currentIndex());
+	}
+	
 }
 
 

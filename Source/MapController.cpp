@@ -3,7 +3,6 @@
 
 MapController::MapController(QWidget *parent)
 	: QGraphicsView(parent), scene(new QGraphicsScene(this)) {
-
 }
 
 void MapController::ChangeMapView(QString file)
@@ -14,7 +13,7 @@ void MapController::ChangeMapView(QString file)
 	QPixmap pixmap(file); // Replace with your image path
 
 	// Create a pixmap item to be added to the scene
-	QGraphicsPixmapItem *item = new QGraphicsPixmapItem(pixmap);
+	item = new QGraphicsPixmapItem(pixmap);
 	
 	// Add and Set the item to the scene
 	scene->addItem(item);
@@ -22,6 +21,7 @@ void MapController::ChangeMapView(QString file)
 
 	//Set the view's size
 	this->setFixedSize(831, 431);
+	this->fitInView(item, Qt::KeepAspectRatio);
 }
 
 //Mouse Controller Start

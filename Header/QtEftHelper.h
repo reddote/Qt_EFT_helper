@@ -7,7 +7,7 @@
 #include "BulletTable.h"
 #include "CustomBulletList.h"
 #include "NetworkHandler.h"
-#include "MenuController.h"
+#include "MapController.h"
 
 class QtEftHelper : public QMainWindow
 {
@@ -16,6 +16,7 @@ class QtEftHelper : public QMainWindow
 public:
     QtEftHelper(QWidget *parent = nullptr);
 	~QtEftHelper();
+	void SetUI(int index);//index only took 0,1,2
 
 private:
 	QComboBox *weapons;
@@ -26,13 +27,22 @@ private:
     Ui::QtEftHelperClass ui;
 	JsonReader *jsonReader;
 	NetworkHandler *jsonDownloader;
-	MenuController *menuController;
+	MapController *mapController;
 	void WeaponComboBoxUpdater();
 	void JsonDowloadFromNet();
+	void InitBulletFrame();
+	void MapChanger(QString map);
+	void Init();
+
+signals:
+	void menuButtonClicked();
+
+public slots:
+	void OnComboBoxIndexChanged(int index);
 
 private slots:
-	void OnComboBoxIndexChanged(int index);
 	void BulletTableUpdater(int index);
-
+	void onMenuButtonTriggered(const QString& mapName);
+	void onMenuButtonTriggered(const int& pageNumber);
 
 };
