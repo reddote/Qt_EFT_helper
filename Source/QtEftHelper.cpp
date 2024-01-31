@@ -8,10 +8,22 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	: QMainWindow(parent)
 {
 	ui.setupUi(this);
-	SetUI(0);
 
+	//Init Setup
+	ObjectInit();
+	JsonDowloadFromNet();
+	SetUI(0);
 	Init();
+	//Setup End
 	
+	MenuController();
+	
+}
+
+QtEftHelper::~QtEftHelper()
+{}
+
+void QtEftHelper::MenuController(){
 	//Menu Controller
 	//Map information for actioMenuButtons
 	QString shoreline = ":/QtEftHelper/Reseources/Shoreline.webp";
@@ -34,7 +46,7 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 		this->onMenuButtonTriggered(custom);
 	});
 
-	connect(menuMapButton, &QMenu::triggered, this, [this, mapPage](){
+	connect(menuMapButton, &QMenu::triggered, this, [this, mapPage]() {
 		this->onMenuButtonTriggered(mapPage); });
 
 	connect(bulletMenuButton, &QAction::triggered, this, [this, bulletPage]() {
@@ -46,9 +58,11 @@ QtEftHelper::QtEftHelper(QWidget *parent)
 	connect(quitMenuButton, &QAction::triggered, &QCoreApplication::quit);
 	//MenuController End
 }
-
-QtEftHelper::~QtEftHelper()
-{}
+void QtEftHelper::ObjectInit(){
+	mapController = new MapController(ui.mapView);
+	jsonReader = new JsonReader();
+	customBulletTable = new BulletTable(this);
+}
 
 void QtEftHelper::SetUI(int index) {
 	if (index == 0) {
@@ -71,14 +85,11 @@ void QtEftHelper::SetUI(int index) {
 }
 
 void QtEftHelper::Init() {
-	mapController = new MapController(ui.mapView);
 
 	weapons = ui.weaponComboBox;
 	bullets = ui.bulletComboBox;
 	bulletTableView = ui.bulletTable;
-	JsonDowloadFromNet();
 
-	jsonReader = new JsonReader();
 	weaponAndBulletList = jsonReader->ReadJsonFile("C:\\Users\\3DDL\\Desktop\\QT_Test\\Eft.json");
 }
 
@@ -95,7 +106,6 @@ void QtEftHelper::InitBulletFrame() {
 		this, SLOT(BulletTableUpdater(int)));//old imp*/
 
 	QQmlApplicationEngine engine;
-	customBulletTable = new BulletTable(this);
 	bulletTableView->setModel(customBulletTable);
 	if (customBulletTable) {
 		engine.rootContext()->setContextProperty("myBulletTableModel", customBulletTable);

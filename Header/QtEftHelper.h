@@ -33,6 +33,8 @@ private:
 	void InitBulletFrame();
 	void MapChanger(QString map);
 	void Init();
+	void MenuController();
+	void ObjectInit();
 
 signals:
 	void menuButtonClicked();
